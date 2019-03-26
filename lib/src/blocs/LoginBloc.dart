@@ -21,4 +21,3 @@ class LoginBloc extends Object with UsernameValidator, PasswordValidator {
   }
 }
 
-final loginBloc = LoginBloc();

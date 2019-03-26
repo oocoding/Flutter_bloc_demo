@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import '../blocs/LoginBloc.dart';
+import '../blocs/LoginBlocProvider.dart';
+
 
 class LoginScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    LoginBloc loginBloc = LoginBlocProvider.blocOf(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("登录页面"),
@@ -12,8 +17,8 @@ class LoginScreen extends StatelessWidget {
         margin: EdgeInsets.all(20),
         child: Column(
           children: <Widget>[
-            _buildUsernameField(),
-            _buildPasswordField(),
+            _buildUsernameField(loginBloc),
+            _buildPasswordField(loginBloc),
             Padding(padding: EdgeInsets.only(bottom: 20)),
             _buildSubmitButton(),
           ],
@@ -22,7 +27,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildUsernameField() {
+  Widget _buildUsernameField(LoginBloc loginBloc) {
     print("Build username field");
 
     return StreamBuilder(
@@ -41,7 +46,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPasswordField() {
+  Widget _buildPasswordField(LoginBloc loginBloc) {
     return StreamBuilder(
       stream: loginBloc.passwordStream,
       builder: (context, snapshot) {
