@@ -1,7 +1,7 @@
 import 'dart:async';
 
 class PasswordValidator {
-  static final passwordMinLength = 8;
+  static final passwordMinLength = 6;
 
   final passwordValidate = StreamTransformer<String, String>.fromHandlers(
     handleData: (password, sink) {
